@@ -9,7 +9,7 @@ description: "Canva가 자사 최대 규모의 업데이트인 Visual Suite 2.0�
 
 # Canva의 혁신적인 변화: Visual Suite 2.0 출시와 미래 디자인의 새 시대
 
-![Canva Visual Suite 2.0](../images/canva-create-2025.jpg)
+![Canva Visual Suite 2.0](https://github.com/youni202/tech-blog/tree/main/images/canva-create-2025.jpg)
 
 *Canva Create 2025 이벤트에서 발표된 Visual Suite 2.0은 디자인과 생산성의 경계를 허무는 혁신적인 업데이트입니다.*
 
