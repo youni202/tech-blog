@@ -1,0 +1,22 @@
+title: 기술 블로그
+description: 최신 기술 트렌드와 디자인 툴에 대한 정보를 제공하는 블로그
+baseurl: "/tech-blog"
+url: "https://youni202.github.io"
+github_username: youni202
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /:year/:month/:day/:title.html
