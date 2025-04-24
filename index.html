@@ -1,0 +1,20 @@
+---
+layout: home
+title: 기술 블로그
+---
+
+<div class="home">
+  <h1 class="page-heading">최신 포스트</h1>
+  
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        <p>{{ post.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
