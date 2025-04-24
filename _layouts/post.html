@@ -4,32 +4,544 @@ layout: default
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%Y년 %m월 %d일" }}
-      </time>
-      {% if page.author %}
-        • <span class="post-author">{{ page.author }}</span>
+    <div class="post-meta-container">
+      <div class="post-meta">
+        <span class="post-date">
+          <i class="fa fa-calendar-alt"></i>
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%Y년 %m월 %d일" }}
+          </time>
+        </span>
+        {% if page.author %}
+          <span class="post-author">
+            <i class="fa fa-user"></i>
+            {{ page.author }}
+          </span>
+        {% endif %}
+        {% if page.reading_time %}
+          <span class="post-reading-time">
+            <i class="fa fa-clock"></i>
+            {{ page.reading_time }}분 소요
+          </span>
+        {% endif %}
+      </div>
+      {% if page.tags %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="post-tag">#{{ tag }}</a>
+        {% endfor %}
+      </div>
       {% endif %}
-    </p>
-    {% if page.tags %}
-    <div class="post-tags">
-      {% for tag in page.tags %}
-        <span class="post-tag">#{{ tag }}</span>
-      {% endfor %}
+    </div>
+    {% if page.featured_image %}
+    <div class="post-featured-image">
+      <img src="{{ page.featured_image }}" alt="{{ page.title }}">
+      {% if page.image_credit %}
+      <span class="image-credit">{{ page.image_credit }}</span>
+      {% endif %}
     </div>
     {% endif %}
   </header>
-
+  
   <div class="post-content">
     {{ content }}
   </div>
-
+  
   <footer class="post-footer">
-    <div class="share-buttons">
-      <p>이 글이 유용했다면 공유해 주세요:</p>
-      <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url | append: site.baseurl | append: page.url | url_encode }}" target="_blank">Twitter</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url | append: site.baseurl | append: page.url | url_encode }}" target="_blank">Facebook</a>
+    {% if page.categories %}
+    <div class="post-categories">
+      <h4>카테고리:</h4>
+      {% for category in page.categories %}
+        <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}" class="post-category">{{ category }}</a>
+      {% endfor %}
     </div>
+    {% endif %}
+    
+    <div class="author-bio">
+      {% if site.author.image %}
+      <img class="author-image" src="{{ site.author.image }}" alt="{{ site.author.name }}">
+      {% endif %}
+      <div class="author-info">
+        <h4>글쓴이 소개</h4>
+        <p>{{ site.author.bio }}</p>
+        <div class="author-social">
+          {% if site.author.twitter %}
+          <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+          {% endif %}
+          {% if site.author.github %}
+          <a href="https://github.com/{{ site.author.github }}" target="_blank"><i class="fab fa-github"></i></a>
+          {% endif %}
+          {% if site.author.linkedin %}
+          <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="share-section">
+      <h4>이 글이 유용했다면 공유해 주세요:</h4>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url | append: site.baseurl | append: page.url | url_encode }}" class="btn-share twitter" target="_blank">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url | append: site.baseurl | append: page.url | url_encode }}" class="btn-share facebook" target="_blank">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url | append: site.baseurl | append: page.url | url_encode }}&title={{ page.title | url_encode }}" class="btn-share linkedin" target="_blank">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ site.url | append: site.baseurl | append: page.url | url_encode }}" class="btn-share email">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+    
+    <div class="post-navigation">
+      {% if page.previous.url %}
+      <a class="prev-post" href="{{ page.previous.url | relative_url }}">
+        <span class="nav-label"><i class="fa fa-arrow-left"></i> 이전 글</span>
+        <span class="nav-title">{{ page.previous.title }}</span>
+      </a>
+      {% endif %}
+      
+      {% if page.next.url %}
+      <a class="next-post" href="{{ page.next.url | relative_url }}">
+        <span class="nav-label">다음 글 <i class="fa fa-arrow-right"></i></span>
+        <span class="nav-title">{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+    </div>
+    
+    {% if site.disqus.shortname %}
+    <div class="comments-section">
+      {% include disqus_comments.html %}
+    </div>
+    {% endif %}
+    
+    {% if site.related_posts.size > 0 %}
+    <div class="related-posts">
+      <h3>관련 글</h3>
+      <ul>
+        {% for related in site.related_posts limit:3 %}
+        <li>
+          <a href="{{ related.url | relative_url }}">
+            <span class="related-title">{{ related.title }}</span>
+            <span class="related-date">{{ related.date | date: "%Y년 %m월 %d일" }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </footer>
 </article>
+
+<div class="copyright">
+  <p>&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://youni365.top" target="_blank">youni365.top</a> - 모든 권리 보유</p>
+</div>
+
+<style>
+  .copyright {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  .copyright a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* 블로그 포스트 스타일 */
+  .post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .post-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1.5rem;
+  }
+  
+  .post-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .post-meta-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .post-meta span {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .post-meta i {
+    margin-right: 0.3rem;
+    color: #0066cc;
+  }
+  
+  .post-tags {
+    margin-top: 0.5rem;
+  }
+  
+  .post-tag {
+    display: inline-block;
+    background-color: #f0f7ff;
+    color: #0066cc;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .post-tag:hover {
+    background-color: #0066cc;
+    color: white;
+  }
+  
+  .post-featured-image {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .post-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .image-credit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    border-top-left-radius: 5px;
+  }
+  
+  .post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .post-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #222;
+  }
+  
+  .post-content h3 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .post-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1.5rem 0;
+  }
+  
+  .post-content blockquote {
+    border-left: 4px solid #0066cc;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #555;
+  }
+  
+  .post-content code {
+    background-color: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+  }
+  
+  .post-content pre {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  
+  .post-content pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .post-categories {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-category {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    text-decoration: none;
+  }
+  
+  .author-bio {
+    display: flex;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .author-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+  }
+  
+  .author-info {
+    flex: 1;
+  }
+  
+  .author-info h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .author-social {
+    margin-top: 1rem;
+  }
+  
+  .author-social a {
+    display: inline-block;
+    margin-right: 1rem;
+    color: #666;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+  }
+  
+  .author-social a:hover {
+    color: #0066cc;
+  }
+  
+  .share-section {
+    margin-bottom: 2rem;
+  }
+  
+  .share-section h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .btn-share {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+  }
+  
+  .btn-share:hover {
+    opacity: 0.9;
+  }
+  
+  .btn-share i {
+    margin-right: 0.5rem;
+  }
+  
+  .twitter {
+    background-color: #1DA1F2;
+  }
+  
+  .facebook {
+    background-color: #4267B2;
+  }
+  
+  .linkedin {
+    background-color: #0077B5;
+  }
+  
+  .email {
+    background-color: #666;
+  }
+  
+  .post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .prev-post, .next-post {
+    flex: 1;
+    min-width: 45%;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.2s ease;
+  }
+  
+  .prev-post:hover, .next-post:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+  
+  .nav-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+  
+  .next-post {
+    text-align: right;
+  }
+  
+  .comments-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .related-posts {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .related-posts h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .related-posts ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .related-posts li {
+    margin-bottom: 1rem;
+  }
+  
+  .related-posts a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #333;
+    padding: 0.8rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease;
+  }
+  
+  .related-posts a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .related-date {
+    color: #666;
+    font-size: 0.85rem;
+  }
+  
+  /* 반응형 스타일 */
+  @media (max-width: 768px) {
+    .post {
+      padding: 1.5rem;
+    }
+    
+    .post-title {
+      font-size: 2rem;
+    }
+    
+    .post-meta-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .post-meta {
+      margin-bottom: 0.8rem;
+    }
+    
+    .author-bio {
+      flex-direction: column;
+    }
+    
+    .author-image {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .post-navigation {
+      flex-direction: column;
+    }
+    
+    .prev-post, .next-post {
+      width: 100%;
+    }
+  }
+</style>
