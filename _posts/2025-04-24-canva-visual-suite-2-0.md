@@ -1,19 +1,17 @@
 ---
+layout: post
 title: "Canva의 혁신적인 변화: Visual Suite 2.0 출시와 미래 디자인의 새 시대"
-date: "2025-04-24"
-author: "Tech Blogger"
-tags: ["Canva", "AI", "디자인", "비주얼 스위트", "생산성"]
-thumbnail: "canva-visual-suite-2.0.jpg"
-description: "Canva가 자사 최대 규모의 업데이트인 Visual Suite 2.0을 출시하며 AI 기반 디자인과 생산성 도구의 경계를 허물다"
+date: 2025-04-24
+image: 
+  path: /assets/img/blog/canva-create-2025.jpg
+description: >
+  Canva가 자사 최대 규모의 업데이트인 Visual Suite 2.0을 출시하며 AI 기반 디자인과 생산성 도구의 경계를 허물다
+sitemap: false
+categories: [blog]
+tags: [Canva, AI, 디자인, 비주얼 스위트, 생산성]
 ---
 
-# Canva의 혁신적인 변화: Visual Suite 2.0 출시와 미래 디자인의 새 시대
-
-![Canva Visual Suite 2.0](../images/canva-create-2025.jpg)
-
-*Canva Create 2025 이벤트에서 발표된 Visual Suite 2.0은 디자인과 생산성의 경계를 허무는 혁신적인 업데이트입니다.*
-
-디자인 플랫폼의 대명사로 자리 잡은 Canva가 역대 최대 규모의 업데이트인 'Visual Suite 2.0'을 공개했습니다. A지난 4월 10일 로스앤젤레스에서 열린 'Canva Create 2025' 행사에서 발표된 이 업데이트는 디자인과 생산성 도구의 경계를 허물며 작업 방식의 패러다임 전환을 예고합니다.
+디자인 플랫폼의 대명사로 자리 잡은 Canva가 역대 최대 규모의 업데이트인 'Visual Suite 2.0'을 공개했습니다. 지난 4월 10일 로스앤젤레스에서 열린 'Canva Create 2025' 행사에서 발표된 이 업데이트는 디자인과 생산성 도구의 경계를 허물며 작업 방식의 패러다임 전환을 예고합니다.
 
 ## Visual Suite 2.0: 디자인과 생산성의 융합
 
@@ -23,9 +21,10 @@ Canva의 새로운 Visual Suite 2.0은 단순한 디자인 툴의 업데이트�
 
 ## Canva Sheets: AI 시대를 위해 재설계된 스프레드시트
 
-![Canva Sheets](../images/canva-sheets.jpg)
+![Canva Sheets](/assets/img/blog/canva-sheets.jpg){:.lead width="800" height="100" loading="lazy"}
 
 *Canva Sheets는 데이터와 디자인을 하나로 통합하여 시각적인 스프레드시트 경험을 제공합니다.*
+{:.figcaption}
 
 Visual Suite 2.0의 가장 주목할 만한 추가 기능 중 하나는 'Canva Sheets'입니다. 기존 스프레드시트의 개념을 완전히 새롭게 재해석한 이 도구는 데이터 분석과 시각화를 위한 강력한 솔루션을 제공합니다.
 
@@ -41,9 +40,10 @@ Visual Suite 2.0의 핵심에는 'Canva AI'라는 대화형 AI 어시스턴트�
 
 ## Magic Studio의 확장: 창의성의 새로운 차원
 
-![Canva Magic Insights](../images/canva-magic-insights.jpg)
+![Canva Magic Insights](/assets/img/blog/canva-magic-insights.jpg){:.lead width="800" height="100" loading="lazy"}
 
 *새로운 Magic Insights 기능은 데이터를 직관적이고 매력적인 시각적 정보로 변환합니다.*
+{:.figcaption}
 
 기존의 Magic Studio 역시 Visual Suite 2.0과 함께 더욱 강력해졌습니다. Magic Design, Magic Write, Magic Media 등의 기능을 통해 사용자는 초안을 빠르게 작성하고, 텍스트를 이미지로 변환하며, 디자인 제안을 즉시 받아볼 수 있습니다.
 
@@ -62,7 +62,3 @@ Canva의 Visual Suite 2.0 출시는 단순한 제품 업데이트를 넘어, 우
 230만 명 이상의 월간 활성 사용자를 보유한 Canva는 이번 업데이트를 통해 Adobe와 같은 전통적인 디자인 소프트웨어 기업과의 경쟁에서 한 발 더 앞서나가며, 디자인 도구의 민주화라는 자사의 미션을 더욱 강화하고 있습니다.
 
 Visual Suite 2.0은 이미 전 세계 사용자들에게 제공되고 있으며, Canva.com에서 직접 경험해 볼 수 있습니다.
-
----
-
-이 블로그 포스트가 유용했다면 아래 소셜 미디어 버튼을 통해 공유해 주세요. Canva의 새로운 기능에 대한 여러분의 경험이나 의견이 있으시다면 댓글로 남겨주세요!
