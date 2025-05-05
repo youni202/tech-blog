@@ -1,0 +1,274 @@
+# Config
+# ========================================================================================
+
+# Uncomment and set the URL of your site (with protocol, e.g. `https://`)
+url:                   https://youni202.github.io
+
+# Uncomment and set the "base URL" of your site.
+# When your site is in a subdirectory, set to `/<name of directory>`,
+# with a leading `/` but no trailing `/`. Use the empty string '' otherwise.
+baseurl:               '/tech-blog'
+
+# General settings
+# ---------------------------------------------------------------------------------------
+
+# Language of your content in 2-letter code, e.g.: en, de.
+# You may also provide a location, e.g.: en-us, de_AT.
+lang:                  ko
+
+# The title of your blog. Used in the sidebar and the browser tab.
+title:                 '기술 블로그'
+
+# A short description (~150 chars) of the page used for the meta description tag.
+# Can use markdown, but no more than one paragraph (enforced by `>`)
+description:           >
+  최신 기술 트렌드와 디자인 툴에 대한 정보를 제공하는 블로그
+
+# A shorter description for the sidebar.
+tagline:               '기술과 디자인 트렌드'
+
+# A list of keywords for your blog
+keywords:              ['기술', '디자인', 'AI', '트렌드']
+
+# A (square) logo for your site.
+# If provided, it will be shown at the top of the sidebar.
+# It also used by the `jekyll-seo-tag` plugin.
+logo:                  /assets/img/logo.png
+
+# This should be the same author as first entry in `_data/authors.yml`.
+author:
+  # Used by `jekyll-feed`:
+  name:                Youni
+  email:               
+  # # Used by `jekyll-seo-tag`:
+  # twitter:             <username>
+
+# Add links to the sidebar.
+menu:
+  - title:             홈
+    url:               /
+  - title:             카테고리
+    url:               /categories/
+  - title:             태그
+    url:               /tags/
+  - title:             소개
+    url:               /about/
+
+# Add links to the footer.
+# Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
+legal:
+  - title:             LICENSE
+    url:               /LICENSE/
+  - title:             NOTICE
+    url:               /NOTICE/
+
+# This text will appear in a `<small>` tag in the footer of every page.
+copyright:             © 2025. All rights reserved.
+
+# Format of the permalinks
+permalink:             /:title/
+
+# Pagination configuration (used by the `blog` layout)
+paginate:              10
+paginate_path:         /:num/
+
+# Theme
+# ---------------------------------------------------------------------------------------
+
+# theme: jekyll-theme-hydejack
+remote_theme: hydecorp/hydejack@v9
+
+# Customizaton
+# ----------------------------------------------------------------------------------------
+ 
+# Sidebar image and theme color of the site.
+accent_image:          /assets/img/sidebar-bg.jpg
+accent_color:          rgb(79,177,186)
+
+# This is used for the `theme-color` meta tag,
+# which changes the background color of the browser UI in certain browsers.
+# Defaults to `accent_color`.
+theme_color:           rgb(25,55,71)
+
+# The string encoding which fonts to fetch from Google Fonts.
+# See: <https://hydejack.com/docs/configuration/>
+google_fonts:          Noto+Sans+KR:400,500,700|Roboto+Slab:700
+
+# The text font. Expects a string that is a valid CSS font-family value.
+# To change font-weight, see _sass/variables.scss
+font:                  Noto Sans KR, Helvetica, Arial, sans-serif
+
+# The font used for headings. Expects a string that is a valid CSS font-family value.
+# To change font-weight, see _sass/variables.scss
+font_heading:          Roboto Slab, Helvetica, Arial, sans-serif
+
+defaults:
+  # You can use this to provide a default accent color and background for
+  # all pages under a given path:
+  - scope:
+      path:            /
+    values:
+      accent_color:    rgb(38,139,210)
+      theme_color:     rgb(32,32,32)
+      accent_image:
+        background:    rgb(32,32,32)
+        overlay:       false
+
+  # Don't include documents in assets in the sitemap
+  - scope:
+      path:            assets/
+    values:
+      sitemap:         false
+
+  # All posts
+  - scope:
+      path:            _posts
+      type:            posts
+    values:
+      layout:          post
+      author:          youni
+      avatar:          /assets/img/avatar1.jpg
+      
+  # All pages
+  - scope:
+      path:            _pages
+    values:
+      layout:          page
+
+# Hydejack Settings
+# ----------------------------------------------------------------------------------------
+# These settings are specific to Hydejack.
+
+hydejack:
+  # Configure the order of complementary content on blog posts
+  post_addons:         [about, newsletter, related, random, comments]
+
+  # Configure the order of complementary content on project pages
+  project_addons:      [about, newsletter, other, comments]
+
+  # Set to `true` if you don't want to show an icon indicating external links
+  no_mark_external:    false
+
+  # Set to `true` if third party plugins fail to work with dynamically loaded pages
+  no_push_state:       false
+
+  # Set to `true` if you want to disable the drawer
+  no_drawer:           false
+
+  # Set to `true` if you don't to use the auto-hiding (JavaScript based) navbar.
+  # Note that this will not hide the navbar completely, only replace it with a static one.
+  # Use custom css to hide completely, e.g. `#_navbar { display: none }`.
+  no_navbar:           false
+
+  # Set to true to disable the built-in search functionality.
+  # Note that search is disabled during local use to save on build time.
+  # Run Jekyll with the `JEKYLL_ENV` environment variable set to `production` to enable.
+  no_search:           false
+
+  # Set to `true` if you do not want parts of the css inlined in <head/>
+  # This will increase site build speed dramatically!
+  no_inline_css:       false
+
+  # Set to `true` if you don't intend on changing the accent color on a per-page basis. 
+  # This will increase site build speed!
+  no_page_style:       false
+
+  # Code blocks and tables "break" the layout by spanning the full available width.
+  # Set this to true if you want them to be the same width as other content.
+  no_break_layout:     true
+
+  # Set to `true` to disable the dynamic Table of Contents on large screens.
+  no_toc:              false
+
+  # When set to `true`, will not extend the content in the "third column" on large screens.
+  # Instead, all content will remains within the center column.
+  # Note that this will not affect the Table of Contents, use `no_toc` instead.
+  no_third_column:     false
+
+  # Set to `true` if you don't like oversized headlines on large screens.
+  no_large_headings:   false
+
+  # Dark Mode config
+  dark_mode:
+    # Set to `true` to always use the dark theme.
+    always:            false
+
+    # Set to `true` to use the dark theme based on visitors' preference (OS setting).
+    dynamic:           true
+
+    # Set to `true` to allow visitors to switch between light and dark mode.
+    icon:              true
+
+# Collections
+# ----------------------------------------------------------------------------------------
+
+collections:
+  featured_categories:
+    permalink:         /category/:name/
+    output:            true
+
+  featured_tags:
+    permalink:         /tag/:name/
+    output:            true
+
+# File inclusion/exclusion
+# ----------------------------------------------------------------------------------------
+
+exclude:
+  - .jekyll-cache
+  - .sass-cache
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+include:
+  - _pages
+
+# Plugins
+# ----------------------------------------------------------------------------------------
+
+plugins:
+  - jekyll-default-layout
+  - jekyll-feed
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-titles-from-headings
+  - jekyll-include-cache
+  - jekyll-last-modified-at
+
+# SEO Tag
+# ---------------------------------------------------------------------------------------
+
+# Used for twitter cards
+# twitter:
+#   username:            <username>
+
+# Plugin Configs
+# ---------------------------------------------------------------------------------------
+optional_front_matter:
+  remove_originals:    true
+
+readme_index:
+  remove_originals:    true
+  with_frontmatter:    true
+
+relative_links:
+  collections:         true
+
+titles_from_headings:
+  strip_title:         true
+  collections:         true
+
+compress_html:
+  comments:            ["<!-- ", " -->"]
+  clippings:           all
+  endings:             all
+  ignore:
+    envs:              [development]
+
+sass:
+  style:               compressed
