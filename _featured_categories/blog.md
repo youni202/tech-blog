@@ -1,7 +1,6 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
-layout: list
-
+layout: page
 # The title of the tag's page.
 title: 블로그
 
@@ -19,3 +18,12 @@ description: >
 # DON'T USE THIS SETTING IN YOUR CATEGORIES!
 sitemap: false
 ---
+
+{% assign posts = site.categories.blog %}
+<ul>
+{% for post in posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>
