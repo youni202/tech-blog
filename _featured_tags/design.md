@@ -1,6 +1,6 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
-layout: tag
+layout: page
 
 # The title of the tag's page.
 title: 디자인
@@ -15,3 +15,12 @@ description: >
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
 ---
+
+{% assign posts = site.tags.디자인 %}
+<ul>
+{% for post in posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>
