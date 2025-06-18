@@ -12,7 +12,7 @@ if [ "$1" != "" ]; then
 fi
 
 # GitHub Pages 레포지토리 경로 설정 (필요에 따라 수정)
-REPO_PATH="./blog"
+REPO_PATH="."
 
 echo "=== 블로그 포스트 배포 시작 ==="
 
