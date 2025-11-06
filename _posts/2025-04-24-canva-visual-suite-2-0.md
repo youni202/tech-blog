@@ -6,7 +6,6 @@ image:
   path: /assets/img/blog/canva-create-2025.jpg
 description: >
   Canva가 자사 최대 규모의 업데이트인 Visual Suite 2.0을 출시하며 AI 기반 디자인과 생산성 도구의 경계를 허물다
-sitemap: false
 categories: [blog]
 tags: [Canva, AI, 디자인, 비주얼 스위트, 생산성]
 ---
