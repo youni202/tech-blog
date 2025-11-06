@@ -1,125 +1,85 @@
-# Config
-# ========================================================================================
-
-# General settings
-# ---------------------------------------------------------------------------------------
-
+# Site settings
 url:                   https://youni202.github.io
 baseurl:               '/tech-blog'
 lang:                  ko
+
+# Site info
+name:                  '기술 블로그'
 title:                 '기술 블로그'
 description:           >
   최신 기술 트렌드와 디자인 툴에 대한 정보를 제공하는 블로그
 tagline:               '기술과 디자인 트렌드'
-keywords:              ['기술', '디자인', 'AI', '트렌드']
-logo:                  /assets/img/logo.png
-permalink:             /:title/
-paginate:              10
-paginate_path:         /:num/
 
-# Authorship
-# ---------------------------------------------------------------------------------------
-
+# Author
 author:
   name:                Youni
-  email:               
+  email:               your-email@example.com
 
-# Theme
-# ---------------------------------------------------------------------------------------
+# GitHub
+github_username:       youni202
 
-remote_theme:          hydecorp/hydejack@v9
+# Favicon
+favicon:               assets/img/logo.png
 
-# Customizaton
-# ---------------------------------------------------------------------------------------
- 
-accent_image:          /assets/img/sidebar-bg.jpg
-accent_color:          rgb(79,177,186)
-theme_color:           rgb(25,55,71)
-google_fonts:          Noto+Sans+KR:400,500,700|Roboto+Slab:700
-font:                  Noto Sans KR, Helvetica, Arial, sans-serif
-font_heading:          Roboto Slab, Helvetica, Arial, sans-serif
-
-# Menu
-# ---------------------------------------------------------------------------------------
-
-menu:
-  - title:             홈
-    url:               /
-  - title:             카테고리
-    url:               /categories/
-  - title:             태그
-    url:               /tags/
-  - title:             소개
-    url:               /about/
+# Pagination
+paginate:              10
+paginate_path:         /page:num/
+permalink:             /:year/:month/:day/:title/
 
 # Default settings
-# ---------------------------------------------------------------------------------------
-
 defaults:
-  # All posts
   - scope:
-      path:            _posts
+      path:            ""
       type:            posts
     values:
       layout:          post
-      author:          youni
+      author:          Youni
       avatar:          /assets/img/avatar1.jpg
-      
-  # All pages
+      comments:        false
+
   - scope:
-      path:            _pages
+      path:            ""
+      type:            pages
     values:
       layout:          page
 
-  # Don't include documents in assets in the sitemap
   - scope:
       path:            assets/
     values:
       sitemap:         false
 
 # Collections
-# ---------------------------------------------------------------------------------------
-
 collections:
   featured_categories:
     permalink:         /category/:name/
     output:            true
-
   featured_tags:
     permalink:         /tag/:name/
     output:            true
 
 # File inclusion/exclusion
-# ---------------------------------------------------------------------------------------
-
 exclude:
   - .jekyll-cache
   - .sass-cache
   - vendor
   - Gemfile
   - Gemfile.lock
-include:
-  - _pages
+  - node_modules
+  - README.md
 
 # Plugins
-# ---------------------------------------------------------------------------------------
-
 plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-include-cache
 
-# Compression
-# ---------------------------------------------------------------------------------------
+# SEO
+twitter:
+  username:            youni202
+  card:                summary
 
-compress_html:
-  comments:            ["<!-- ", " -->"]
-  clippings:           all
-  endings:             all
-  ignore:
-    envs:              [development]
-
-sass:
-  style:               compressed
+social:
+  name:                Youni
+  links:
+    - https://github.com/youni202
